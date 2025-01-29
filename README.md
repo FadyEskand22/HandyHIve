@@ -22,7 +22,7 @@ Austin Rehner, Fady Eskandr, Isaac Hollaway
    - Customers can rate and review completed jobs.<br />
    - Reviews will show on the promotors' dashboard
   
-# Provider (service companies): Fady <br />
+# Provider (services): Fady <br />
   1. Create/modify/remove provider profile: <br />
 - Providers will be able to sign up as providers and add details about their services, pricing, and usual availability.<br />
 - Their profiles can be edited and deleted as needed<br />

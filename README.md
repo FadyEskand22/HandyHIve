@@ -34,7 +34,7 @@ Austin Rehner, Fady Eskandr, Isaac Hollaway
   4. Reply to reviews: <br />
 - Providers will be able to respond to customer reviews to address concerns and show appreciation for their feedback.
 
-# SysAdmin: Iasac <br />
+# SysAdmin: Isaac <br />
 1. Manage user access:  <br />
 - The admin should be able to approve or deny access to customers and providers <br />
 - Admin side will handle provider legitimacy to ensure legitimate providers joining <br />

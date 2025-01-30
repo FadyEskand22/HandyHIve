@@ -3,7 +3,7 @@ Handy Hive
 # Team Members:
 Austin Rehner, Fady Eskandr, Isaac Hollaway
 # Description:
-- Our software will help connect homeowners with professional industry providers like electricians, plumbers, HVAC, etc., and other repair needs. Our platform will aim to allow customers to browse, book, and review service providers while allowing providers to have a way to manage their services and client reviews.
+- Our software will help connect homeowners with professional industry providers like electricians, plumbers, HVAC technicians, etc., and other repair needs. Our platform will aim to allow customers to browse, book, and review service providers while allowing providers to have a way to manage their services and client reviews.
 # Possible questions to answer: 
 - Our main goal will be for customers to be able to connect and find reliable and highly rated professionals for their home repair issues.
 - For providers, we will aim to provide a platform for them to showcase and advertise their expertise, or any special promotions running for them at the moment

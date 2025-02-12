@@ -1,0 +1,147 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+/* Container with Glassmorphism */
+.login-container, .registration-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Header */
+.login-container h1, .registration-container h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Toggle Buttons */
+.toggle-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.toggle-buttons button {
+    flex: 1;
+    padding: 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.toggle-buttons button.active {
+    background-color: #ff5e62;
+}
+
+.toggle-buttons button:hover {
+    transform: scale(1.05);
+}
+
+/* Registration Forms */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Ensures space between fields */
+    align-items: center;
+    width: 100%;
+}
+
+/* Labels */
+.registration-form label {
+    text-align: left;
+    font-weight: bold;
+    width: 90%;
+    margin-top: 5px; /* Space above labels */
+}
+
+/* Input Fields */
+.registration-form input,
+.registration-form textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+    color: #333;
+    width: 90%; /* Ensures uniform width */
+}
+
+.registration-form input::placeholder {
+    color: #fff;
+}
+
+.registration-form input:focus, .registration-form textarea:focus {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* Button Styles */
+.registration-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    background-color: #ff5e62;
+    color: #fff;
+    width: 100%;
+}
+
+.registration-form button:hover {
+    background-color: #ff3b3f;
+    transform: scale(1.05);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container, .registration-container {
+        padding: 20px;
+    }
+
+    .login-container h1, .registration-container h1 {
+        font-size: 1.5rem;
+    }
+}

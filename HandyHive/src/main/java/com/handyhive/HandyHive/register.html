@@ -1,0 +1,123 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandyHive - Register</title>
+    <link rel="stylesheet" href="css/registerStyle.css">
+</head>
+<body>
+    <div class="registration-container">
+        <h1>Register and Connect Today!</h1>
+        <div class="toggle-buttons">
+            <button id="customerBtn" class="active" onclick="showCustomerForm()">Customer</button>
+            <button id="providerBtn" onclick="showProviderForm()">Provider</button>
+        </div>
+
+        <!-- Customer Registration Form -->
+        <form id="customerForm" class="registration-form" onsubmit="registerCustomer(event)">
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName" name="name" required>
+            <label for="customerEmail">Email:</label>
+            <input type="email" id="customerEmail" name="email" required>
+            <label for="customerPassword">Password:</label>
+            <input type="password" id="customerPassword" name="password" required>
+            <label for="customerAddress">Address:</label>
+            <input type="text" id="customerAddress" name="address" required>
+            <label for="customerPhone">Phone Number:</label>
+            <input type="text" id="customerPhone" name="phoneNumber" required>
+            <button type="submit">Register as Customer</button>
+        </form>
+
+        <!-- Provider Registration Form -->
+        <form id="providerForm" class="registration-form" style="display: none;" onsubmit="registerProvider(event)">
+            <label for="providerName">Name:</label>
+            <input type="text" id="providerName" name="name" required>
+            <label for="providerEmail">Email:</label>
+            <input type="email" id="providerEmail" name="email" required>
+            <label for="providerPassword">Password:</label>
+            <input type="password" id="providerPassword" name="password" required>
+            <label for="providerServiceType">Service Type:</label>
+            <input type="text" id="providerServiceType" name="serviceType" required>
+            <label for="providerPricing">Pricing:</label>
+            <input type="number" id="providerPricing" name="pricing" step="0.01" required>
+            <label for="providerAvailability">Availability:</label>
+            <input type="text" id="providerAvailability" name="availability" required>
+            <label for="providerDescription">Description:</label>
+            <textarea id="providerDescription" name="description" rows="4" required></textarea>
+            <button type="submit">Register as Provider</button>
+        </form>
+    </div>
+
+    <script>
+        // Toggle between customer and provider forms
+        function showCustomerForm() {
+            document.getElementById('customerForm').style.display = 'block';
+            document.getElementById('providerForm').style.display = 'none';
+            document.getElementById('customerBtn').classList.add('active');
+            document.getElementById('providerBtn').classList.remove('active');
+        }
+
+        function showProviderForm() {
+            document.getElementById('providerForm').style.display = 'block';
+            document.getElementById('customerForm').style.display = 'none';
+            document.getElementById('providerBtn').classList.add('active');
+            document.getElementById('customerBtn').classList.remove('active');
+        }
+
+        // Register Customer
+        function registerCustomer(event) {
+            event.preventDefault();
+            const formData = {
+                name: document.getElementById('customerName').value,
+                email: document.getElementById('customerEmail').value,
+                password: document.getElementById('customerPassword').value,
+                address: document.getElementById('customerAddress').value,
+                phoneNumber: document.getElementById('customerPhone').value
+            };
+
+            fetch('/api/register/customer', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.message === 'Registration successful!') {
+                    window.location.href = '/login.html'; // Redirect to login page
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Register Provider
+        function registerProvider(event) {
+            event.preventDefault();
+            const formData = {
+                name: document.getElementById('providerName').value,
+                email: document.getElementById('providerEmail').value,
+                password: document.getElementById('providerPassword').value,
+                serviceType: document.getElementById('providerServiceType').value,
+                pricing: parseFloat(document.getElementById('providerPricing').value),
+                availability: document.getElementById('providerAvailability').value,
+                description: document.getElementById('providerDescription').value
+            };
+
+            fetch('/api/register/provider', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.message === 'Registration successful!') {
+                    window.location.href = '/login.html'; // Redirect to login page
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

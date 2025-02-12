@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandyHive - Provider Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to Your Dashboard!</h1>
+    <button onclick="window.location.href='/create-post'">Create New Post</button>
+    <div id="posts">
+        <!-- Your posts will be dynamically loaded here -->
+    </div>
+
+    <script>
+        // Fetch your posts from the server
+        fetch('/api/provider/posts')
+            .then(response => response.json())
+            .then(posts => {
+                const postsDiv = document.getElementById('posts');
+                posts.forEach(post => {
+                    const postDiv = document.createElement('div');
+                    postDiv.innerHTML = `
+                        <h3>${post.title}</h3>
+                        <img src="${post.imageUrl}" alt="Post Image" style="width: 200px;">
+                        <p>${post.description}</p>
+                    `;
+                    postsDiv.appendChild(postDiv);
+                });
+            });
+    </script>
+</body>
+</html>

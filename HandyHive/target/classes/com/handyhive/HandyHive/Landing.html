@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Welcome to Handy Hive!</h1>
+            <p>Create your profile and stay connected.</p>
+        </div>
+    </header>
+
+    <section class="profile-creation">
+        <div class="container">
+            <h2>Create Your Profile</h2>
+            <form action="/submit-profile" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="profile-image">Upload Profile Picture:</label>
+                    <input type="file" id="profile-image" name="profile-image" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Create Profile</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="update-profile">
+        <div class="container">
+            <h2>Update Your Profile</h2>
+            <p>Already have a profile? You can update your information at any time!</p>
+            <form action="/update-profile" method="POST">
+                <div class="form-group">
+                    <label for="update-email">Enter your email to update:</label>
+                    <input type="email" id="update-email" name="update-email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Handy Hive. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

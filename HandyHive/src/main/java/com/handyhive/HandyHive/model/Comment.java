@@ -1,6 +1,5 @@
 package com.handyhive.HandyHive.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -22,5 +21,6 @@ public class Comment {
     private Customer customer;
 
     private String comment;
+    private String providerReply; // Provider's response to the review
     private LocalDateTime createdAt = LocalDateTime.now();
 }

@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HandyHive - Login</title>
-    <link rel="stylesheet" href="css/loginStyle.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HandyHive - Login</title>
+  <link rel="stylesheet" href="/src/main/java/com/handyhive/HandyHive/css/loginStyle.css">
 </head>
 <body>
-    <div class="login-container">
-        <h1>Login to HandyHive</h1>
-        <form id="loginForm">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-        <button class="register-button" onclick="window.location.href='register.html'">Register</button>
-    </div>
+  <div class="login-container">
+    <h1>Login to HandyHive</h1>
+    <form id="loginForm">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      
+      <button type="submit">Login</button>
+    </form>
+  </div>
 
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = {
-                email: document.getElementById('email').value,
-                password: document.getElementById('password').value
-            };
-
-            fetch('/api/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === 'Login successful!') {
-                    window.location.href = data.redirectUrl; // Redirect to the appropriate page
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    </script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Send the credentials to our backend endpoint
+      const response = await fetch('/api/login', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ email, password })
+      });
+      
+      const data = await response.json();
+      
+      if(response.ok) {
+         // Redirect to the URL provided by the backend
+         window.location.href = data.redirectUrl;
+      } else {
+         alert(data.message || "Login failed. Please check your credentials.");
+      }
+    });
+  </script>
 </body>
 </html>

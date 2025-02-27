@@ -1,6 +1,5 @@
 package com.handyhive.HandyHive.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -18,6 +17,7 @@ public class Post {
     private Provider provider;
 
     private String title;
+    private String description;  // Service details
     private String imageUrl;
     private LocalDateTime createdAt = LocalDateTime.now();
 }

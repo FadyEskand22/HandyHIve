@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Service Listing</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Edit Service Listing</h1>
+  <form id="editPostForm">
+    <input type="hidden" id="postId" name="postId">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="imageUrl">Image URL:</label>
+    <input type="text" id="imageUrl" name="imageUrl">
+
+    <button type="submit">Update</button>
+  </form>
+
+  <script>
+    // Get postId from URL query param
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('postId');
+    document.getElementById("postId").value = postId;
+
+    // Fetch existing post data
+    fetch(`/api/provider/posts/${postId}`)
+      .then(response => response.json())
+      .then(post => {
+        document.getElementById("title").value = post.title;
+        document.getElementById("description").value = post.description;
+        document.getElementById("imageUrl").value = post.imageUrl;
+      });
+
+    document.getElementById("editPostForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const updatedPost = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        imageUrl: document.getElementById("imageUrl").value
+      };
+
+      const response = await fetch(`/api/provider/posts/${postId}`, {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(updatedPost)
+      });
+
+      const data = await response.json();
+      if(response.ok) {
+        alert("Post updated successfully!");
+        window.location.href = "/ProviderDashboard.html";
+      } else {
+        alert("Error updating post: " + data.message);
+      }
+    });
+  </script>
+</body>
+</html>
